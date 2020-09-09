@@ -1,0 +1,9 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note over browser:
+browser sends JSON data: {content: "test new note", date: "2020-09-09T10:33:37.718Z"}
+end note
+
+server-->browser: JSON data {"message":"note created"}
+note over browser:
+browser redraws notes
+end note
