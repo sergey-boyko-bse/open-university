@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 
 const App = () => {
   const [ persons, setPersons ] = useState([
-    { name: 'Arto Hellas', number: '040-1234567' }
+    //{ name: 'Arto Hellas', number: '040-1234567' }
   ]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
@@ -39,6 +40,14 @@ const App = () => {
   }
 
   const filteredPersons = keyword ? persons.filter(x => x.name.toLowerCase().indexOf(keyword.toLowerCase()) > -1) : persons
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/db')
+      .then(response => {
+        setPersons(response.data.persons)
+      })
+  }, [])
 
   return (
     <div>
