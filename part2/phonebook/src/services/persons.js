@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiUrl = 'http://localhost:3001/persons'
+const apiUrl = '/api/persons' //'https://polar-spire-33098.herokuapp.com/api/persons' //'http://localhost:3001/api/persons'
 
 const getAll = () => {
     return axios
