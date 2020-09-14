@@ -34,8 +34,9 @@ const App = () => {
             handleNotification(notification)
           })
           .catch(error => {
+            console.log(error)
             const notification = {
-              message: `Person '${personToUpdate.name}' has already been removed from server`,
+              message: error.response.data.error,
               type: 'error'
             }
             handleNotification(notification)
@@ -60,7 +61,7 @@ const App = () => {
         })
         .catch(error => {
           const notification = {
-            message: `Person '${newPerson.name}' cannot be created`,
+            message: error.response.data.error,
             type: 'error'
           }
           handleNotification(notification)
